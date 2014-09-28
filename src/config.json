@@ -1,0 +1,21 @@
+{
+	"options":{
+		"url": "https://github.com/trending",
+		"encoding": "utf-8"
+	},
+	"regexGroupForItem":["<ol class=\"repo-list\">[\\w\\W]+?</ol>", "<li class=\"repo-list-item\"[\\w\\W]+?</li>"],
+	"fields": [
+		{
+		    "name": "project",
+            "type": "string",
+            "regexGroup": ["<h3 class=\"repo-list-name\">[\\w\\W]+?</h3>", "(?<=<a href=\").+(?=\")"]
+        },
+        {
+        	"name": "url",
+            "type": "string",
+            "prefix": "https://github.com",
+            "regexGroup": ["<h3 class=\"repo-list-name\">[\\w\\W]+?</h3>",
+            				"(?<=<a href=\").+(?=\")"]
+        }
+	]
+}

@@ -58,7 +58,7 @@ class UrlDriver():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
-    config = getConfig()
+    config = getConfig("../test/bigbangtheory.json")
 
     driver = UrlDriver(config)
     driver.setOutputHandler(ConsoleOutput(config.getOptions()["encoding"]))

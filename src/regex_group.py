@@ -6,7 +6,7 @@ class RegexGroup():
         self.regex_list = []
 
     def addRegex(self, regex):
-        if type(regex) == str:
+        if type(regex) == str or type(regex) == unicode:
             regexObj = re.compile(regex, re.MULTILINE)
             self.regex_list.append(regexObj)
         elif type(regex) == list:
