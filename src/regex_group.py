@@ -20,7 +20,10 @@ class RegexGroup():
 
     def getAllMatches(self, text):
         matches = []
-        self._matchText(matches, text, self.regex_list)
+        if len(self.regex_list) == 0:
+            matches.append(text)
+        else:
+            self._matchText(matches, text, self.regex_list)
         return matches
 
     def _matchText(self, resultArr, text, regexList):
@@ -63,6 +66,13 @@ class Test(unittest.TestCase):
         self.assertEquals("defggfed", result[0])
         self.assertEquals("d11111d", result[1])
         self.assertEquals("d22222d", result[2])
+
+    def testEmptyGroup(self):
+        text = "abcdefggfedcba abcd11111dcba abcd22222dcba";
+        rGroup = RegexGroup()
+        result = rGroup.getAllMatches(text)
+        self.assertEquals(1, len(result))
+        self.assertEquals(text, result[0])
 
 
 if __name__ == "__main__":
